@@ -1,13 +1,14 @@
 //
 //  ViewController.m
-//  计算器001
+//  代理模式
 //
-//  Created by ChenShuKun on 12/25/15.
+//  Created by ChenShuKun on 12/29/15.
 //  Copyright © 2015 ChenShuKun. All rights reserved.
 //
 
 #import "ViewController.h"
-#import "CalculateFactory.h"
+#import "SchoolGirl.h"
+#import "Proxy.h"
 
 @interface ViewController ()
 
@@ -18,11 +19,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    Calculate *calculate = [CalculateFactory calculateWithOperate:@"+"];
-    calculate.number1 = 10;
-    calculate.number2 = 20;
-   NSLog(@"---%ld", (long)[calculate calculate]);
+    SchoolGirl *jiaojiao = [[SchoolGirl alloc]init];
+    jiaojiao.name = @"娇娇";
     
+    
+    Proxy *proxy = [[Proxy alloc]initwithSchoolGirlsName:jiaojiao];
+    [proxy sendChocolate];
+    [proxy sendFlow];
     
 }
 

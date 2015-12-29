@@ -1,15 +1,16 @@
 //
 //  ViewController.m
-//  计算器001
+//  依赖倒转
 //
-//  Created by ChenShuKun on 12/25/15.
+//  Created by ChenShuKun on 12/28/15.
 //  Copyright © 2015 ChenShuKun. All rights reserved.
 //
 
 #import "ViewController.h"
-#import "CalculateFactory.h"
+#import "BMW.h"
+#import "AutoSystem.h"
 
-@interface ViewController ()
+@interface ViewController ()<AutoSystemDelegate>
 
 @end
 
@@ -18,12 +19,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    Calculate *calculate = [CalculateFactory calculateWithOperate:@"+"];
-    calculate.number1 = 10;
-    calculate.number2 = 20;
-   NSLog(@"---%ld", (long)[calculate calculate]);
+    BMW *bmw = [[BMW alloc]init];
+    AutoSystem *autosystem =  [[AutoSystem alloc]init];
+    autosystem.autoDelegate = self;
     
-    
+}
+
+- (void)AutosystemFunc {
+    NSLog(@"%s",__func__);
 }
 
 - (void)didReceiveMemoryWarning {

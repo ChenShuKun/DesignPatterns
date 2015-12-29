@@ -15,19 +15,41 @@
 @implementation CalculateFactory
 + (Calculate *)calculateWithOperate:(NSString *)operate {
     
-    if ([operate isEqualToString:@"+"]) {
-        return  [[Add alloc]init];
+    NSArray *array = @[@"+",@"-",@"*",@"/",];
+    NSInteger inter = [array indexOfObject:operate];
+    switch (inter) {
+        case 0:
+            return  [[Add alloc]init];
+            break;
+            
+        case 1:
+            return  [[minus alloc]init];
+            break;
+            
+        case 2:
+            return  [[Multiplication alloc]init];
+            break;
+            
+        case 3:
+            return  [[Divided alloc]init];
+            break;
+            
+        default:
+            break;
     }
-    if ([operate isEqualToString:@"-"]) {
-        return  [[minus alloc]init];
-    }
-    if ([operate isEqualToString:@"*"]) {
-        return  [[Multiplication alloc]init];
-    }
-    if ([operate isEqualToString:@"/"]) {
-        return  [[Divided alloc]init];
-    }
-    return nil;
+//    if ([operate isEqualToString:@"+"]) {
+//        
+//    }
+//    if ([operate isEqualToString:@"-"]) {
+//        return  [[minus alloc]init];
+//    }
+//    if ([operate isEqualToString:@"*"]) {
+//        return  [[Multiplication alloc]init];
+//    }
+//    if ([operate isEqualToString:@"/"]) {
+//        return  [[Divided alloc]init];
+//    }
+     return nil;
 }
 
 @end
